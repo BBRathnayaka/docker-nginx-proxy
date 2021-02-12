@@ -1,0 +1,17 @@
+version: "3.3"
+services:
+  nginx-proxy:
+    build:
+      context: ./
+      dockerfile: nginx.Dockerfile
+    restart: always
+    image: nginx
+    ports:
+      - 80:80
+    networks:
+      - network
+    volumes:
+      - ./proxy.conf:/etc/nginx/conf.d/proxy.conf
+
+networks:
+    network: 
